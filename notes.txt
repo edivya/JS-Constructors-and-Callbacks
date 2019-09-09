@@ -1,0 +1,13 @@
+install- npm i
+you will get log.txt file
+then you need to execute the -cat log.txt
+----
+steps:
+	CLI
+	--handleinput
+	TVMave
+--show		--actors
+	---  ---
+	LOG
+
+	console
