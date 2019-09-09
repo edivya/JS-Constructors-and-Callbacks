@@ -16,11 +16,11 @@ var TV = function() {
 
       // showData ends up being the string containing the show data we will print to the console
       var showData = [
-        "Name: " + jsonData.name,
-        "birthday: " + jsonData.birthday,
-        "gender: " + jsonData.gender,
-        "country: " + jsonData.country,
-        "TV Maze URL: " + jsonData.TVMazeURL
+        "Show: " + jsonData.name,
+        "Genre(s): " + jsonData.genres.join(", "),
+        "Rating: " + jsonData.rating.average,
+        "Network: " + jsonData.network.name,
+        "Summary: " + jsonData.summary
       ].join("\n\n");
 
       // Append showData and the divider to log.txt, print showData to the console
@@ -31,35 +31,28 @@ var TV = function() {
     });
   };
 
+  // findActor takes in the name of an actor to search for
   this.findActor = function(actor) {
     var URL = "http://api.tvmaze.com/search/people?q=" + actor;
 
-    // Add code to search the TVMaze API for the given actor
-    // The API will return an array containing multiple actors, just grab the first result
-    // Append the actor's name, birthday, gender, country, and URL to the `log.txt` file
-    // Print this information to the console
     axios.get(URL).then(function(response) {
-        // Place the response.data into a variable, jsonData.
-        var jsonData = response.data[0].person;
+      // Grab the first index of the response array, access the object at the `person` key and store it in a variable.
+      var jsonData = response.data[0].person;
+      // actorData ends up being the string containing the show data we will print to the console
+      var actorData = [
+        "Name: " + jsonData.name,
+        "Birthday: " + jsonData.birthday,
+        "Gender: " + jsonData.gender,
+        "Country: " + jsonData.country.name,
+        "URL: " + jsonData.url
+      ].join("\n\n");
 
-        console.log(jsonData);
-  
-        // showData ends up being the string containing the show data we will print to the console
-        var showData = [
-          "Name: " + jsonData.name,
-          "birthday: " + jsonData.birthday,
-          "gender: " + jsonData.gender,
-          "country: " + jsonData.country,
-          "TV Maze URL: " + jsonData.TVMazeURL
-        ].join("\n\n");
-  
-        // Append showData and the divider to log.txt, print showData to the console
-        fs.appendFile("log.txt", showData + divider, function(err) {
-          if (err) throw err;
-          console.log(showData);
-        });
+      // Append actorData and the divider to log.txt, print showData to the console
+      fs.appendFile("log.txt", actorData + divider, function(err) {
+        if (err) throw err;
+        console.log(actorData);
       });
-    
+    });
   };
 };
 
