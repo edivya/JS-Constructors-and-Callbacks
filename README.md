@@ -9,3 +9,7 @@ In this app, we will discuss JavaScript's brand of OOP by introducing constructo
 * Callbacks
 * Constructors
 * Prototypes
+
+## Helpful Links
+* [Constructor Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
+* [Prototype Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/prototype)
